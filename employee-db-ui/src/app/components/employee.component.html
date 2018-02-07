@@ -1,0 +1,47 @@
+
+
+
+<mat-card>
+  <form [formGroup]="employeeForm" #formDir="ngForm" (ngSubmit)="onSubmit(employeeForm.value)">
+    <div class="form-container"> 
+        <mat-form-field>
+          <input matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Mobile" formControlName="mobile">
+        </mat-form-field> 
+      </div>
+    <button mat-raised-button color="accent" type="submit">Add New Employee</button>
+  </form>
+</mat-card>
+
+<mat-card>
+
+
+   <mat-grid-list class="mat-grid-tile-header" cols="5" rowHeight="3em">
+        <mat-grid-tile>First Name</mat-grid-tile>
+        <mat-grid-tile>Last Name</mat-grid-tile>
+        <mat-grid-tile>Email</mat-grid-tile>
+        <mat-grid-tile>Mobile</mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+      </mat-grid-list> 
+    <mat-grid-list cols="5" rowHeight="2em" *ngFor="let employee of employees">
+        <mat-grid-tile>{{employee.firstName}}</mat-grid-tile>
+        <mat-grid-tile>{{employee.lastName}}</mat-grid-tile>
+        <mat-grid-tile>{{employee.email}}</mat-grid-tile>
+        <mat-grid-tile>{{employee.mobile}}</mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-icon-button (click)="deleteEmployee(employee)">
+            <mat-icon class="form-icon">delete</mat-icon>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      
+  
+</mat-card>
